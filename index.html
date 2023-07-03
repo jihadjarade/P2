@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DoubleDash Raceway</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #333333; /* Change the background color to dark grey */
+    }
+
+  
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+  
+    .navbar-brand img {
+      margin-right: 5px;
+    }
+  
+    .banner-img {
+      position: relative;
+      height: 400px;
+      width: 100%;
+    }
+  
+    .banner-img::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.6;
+      animation: imageAnimation 20s infinite;
+    }
+  
+    @keyframes imageAnimation {
+      0% {
+        background-image: url("assets/main1.jpg");
+      }
+      50% {
+        background-image: url("assets/main.jpg");
+      }
+      100% {
+        background-image: url("assets/main1.jpg");
+      }
+    }
+  
+    .banner-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #ffffff;
+    }
+  
+    .description {
+      padding: 20px;
+      text-align: left;
+      color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #c0c0c0;">
+    <a class="navbar-brand" href="#">
+      <img src="assets/logo1.png" alt="Logo" width="180" height="80" class="d-inline-block align-top">
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="tracks.html" style="color: black;">Tracks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cars.html" style="color: black;">Cars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="instructors.html" style="color: black;">Instructors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="leaderboards.html" style="color: black;">Leaderboards</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html" style="color: black;">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="booking.html" style="color: black;">Book Now</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Banner Section -->
+  <section class="banner-img">
+    <div class="banner-content">
+      <h1 class="display-4">DoubleDash Raceway</h1>
+      <p class="lead">Ottawa's Largest Racetrack</p>
+      <!-- <p>Insert your description here.</p> -->
+      <a href="booking.html" class="btn btn-danger btn-lg">Book Now</a>
+    </div>
+  </section>
+
+  <!-- Description Section -->
+  <section class="description">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 style="color: white;">About Us</h2>
+          <p style="color: white;">
+            DoubleDash Raceway is a premier destination for racing enthusiasts. We offer a variety of thrilling tracks designed to cater to different racing preferences. Our rental service provides access to high-performance vehicles, ensuring everyone can experience the thrill of racing. With experienced instructors available, we offer personalized coaching to help improve your skills on the track. Safety is our utmost priority, with strict protocols in place. Join us at DoubleDash Raceway for an unforgettable adrenaline-filled experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

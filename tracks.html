@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DoubleDash Raceway - Our Racetracks</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand img {
+      margin-right: 5px;
+    }
+
+    #track-selection {
+      padding: 0 15px;
+    }
+
+    .filter-section {
+      margin-bottom: 20px;
+    }
+
+    .filter-section label,
+    .sort-section label {
+      margin-right: 10px;
+    }
+
+    .track-item {
+      display: none;
+    }
+
+    .info-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // Filter tracks based on selected difficulty
+      $(".filter-checkbox").change(function () {
+        var selectedDifficulties = [];
+        $(".filter-checkbox:checked").each(function () {
+          selectedDifficulties.push($(this).val());
+        });
+  
+        if (selectedDifficulties.length > 0) {
+          $(".track-item").hide();
+          selectedDifficulties.forEach(function (difficulty) {
+            $(".track-item[data-difficulty='" + difficulty + "']").show();
+          });
+        } else {
+          $(".track-item").show();
+        }
+      });
+  
+      // Sort tracks by length
+      $("#sort-length").change(function () {
+        var sortBy = $(this).val();
+        var trackItems = $(".track-item");
+  
+        if (sortBy === "asc") {
+          trackItems.sort(function (a, b) {
+            var lengthA = parseFloat($(a).find(".track-length").text());
+            var lengthB = parseFloat($(b).find(".track-length").text());
+            return lengthA - lengthB;
+          });
+        } else if (sortBy === "desc") {
+          trackItems.sort(function (a, b) {
+            var lengthA = parseFloat($(a).find(".track-length").text());
+            var lengthB = parseFloat($(b).find(".track-length").text());
+            return lengthB - lengthA;
+          });
+        }
+  
+        $(".track-list").html(trackItems);
+      });
+  
+      // Show all tracks by default
+      $(".track-item").show();
+    });
+  </script>
+  
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #c0c0c0;">
+    <a class="navbar-brand" href="#">
+      <img src="assets/logo1.png" alt="Logo" width="180" height="80" class="d-inline-block align-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html" style="color: black;">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="tracks.html" style="color: black;">Tracks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cars.html" style="color: black;">Cars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="instructors.html" style="color: black;">Instructors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="leaderboards.html" style="color: black;">Leaderboards</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html" style="color: black;">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="booking.html" style="color: black;">Book Now</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Track Selection Section -->
+  <section id="track-selection" class="py-5">
+    <div class="container">
+      <h2 class="display-4 text-center mb-5">Our Racetracks</h2>
+
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="filter-section">
+            <h5>Difficulty</h5>
+            <div>
+              <label><input type="checkbox" class="filter-checkbox" value="Easy"> Easy</label>
+            </div>
+            <div>
+              <label><input type="checkbox" class="filter-checkbox" value="Medium"> Medium</label>
+            </div>
+            <div>
+              <label><input type="checkbox" class="filter-checkbox" value="Hard"> Hard</label>
+            </div>
+          </div>
+
+          <div class="sort-section">
+            <h5>Sort By Length</h5>
+            <select id="sort-length" class="form-control">
+              <option value="asc">Short to Long</option>
+              <option value="desc">Long to Short</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-lg-9">
+          <div class="row track-list">
+            <div class="col-lg-4">
+              <div class="card track-item" data-difficulty="Easy">
+                <img class="card-img-top" src="assets/track1.jpg" alt="Track 1">
+                <div class="card-body">
+                  <h5 class="card-title">Track 1</h5>
+                  <p class="card-text">Description of Track 1.</p>
+                  <p class="track-length">2.5 miles</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card track-item" data-difficulty="Medium">
+                <img class="card-img-top" src="assets/track2.jpg" alt="Track 2">
+                <div class="card-body">
+                  <h5 class="card-title">Track 2</h5>
+                  <p class="card-text">Description of Track 2.</p>
+                  <p class="track-length">3.2 miles</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card track-item" data-difficulty="Hard">
+                <img class="card-img-top" src="assets/track3.jpg" alt="Track 3">
+                <div class="card-body">
+                  <h5 class="card-title">Track 3</h5>
+                  <p class="card-text">Description of Track 3.</p>
+                  <p class="track-length">4.7 miles</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>
